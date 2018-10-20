@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Encodings.Web;
 using MvcMovie.Models;
 
 namespace MvcMovie.Controllers
@@ -15,29 +16,12 @@ namespace MvcMovie.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Hello" + name;
+            ViewData["NumTimes"] = numTimes;
 
             return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
